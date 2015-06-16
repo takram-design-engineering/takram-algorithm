@@ -11,7 +11,7 @@ A collection of C++ classes and functions designed to be used on ranges of eleme
 
 #### LeafIterator
 
-A leaf iterator traverses all the leafs in a container that has a tree-like structure. Empty sub-containers which have no leaves will be skipped in iterations.
+A leaf iterator traverses all the leafs in a container that has a tree-like structure. Empty sub-containers which have no leaves will be skipped during iteration.
 
 ```cpp
 using C = std::vector<int>;
@@ -23,19 +23,14 @@ A a{{{}}, {{0, 1}, {2, 3}}, {{}}, {{}, {4, 5}, {}}, {{}}};
 auto itr = Iterator(a.begin(), a.end());
 const auto end = Iterator(a.end(), a.end());
 for (; itr != end; ++itr) {
-  std::cout << *itr << std::endl;
+  std::cout << *itr << " " << std::endl;
 }
 ```
 
-The code above will output:
+This code will output:
 
 ```
-0
-1
-2
-3
-4
-5
+0 1 2 3 4 5
 ```
 
 ## Setup Guide
