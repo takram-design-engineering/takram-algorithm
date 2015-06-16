@@ -25,8 +25,8 @@
 //
 
 #pragma once
-#ifndef TAKRAM_ALGORITHM_TREE_ITERATOR_H_
-#define TAKRAM_ALGORITHM_TREE_ITERATOR_H_
+#ifndef TAKRAM_ALGORITHM_LEAF_ITERATOR_H_
+#define TAKRAM_ALGORITHM_LEAF_ITERATOR_H_
 
 #include <iterator>
 
@@ -219,4 +219,4 @@ using algorithm::LeafIterator;
 
 }  // namespace takram
 
-#endif  // TAKRAM_ALGORITHM_TREE_ITERATOR_H_
+#endif  // TAKRAM_ALGORITHM_LEAF_ITERATOR_H_
