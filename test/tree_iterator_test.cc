@@ -24,12 +24,77 @@
 //  DEALINGS IN THE SOFTWARE.
 //
 
+#include <iterator>
+#include <vector>
+
 #include "gtest/gtest.h"
 
 #include "takram/algorithm/tree_iterator.h"
 
 namespace takram {
 namespace algorithm {
+
+namespace {
+
+using C = std::vector<int>;
+using B = std::vector<C>;
+using A = std::vector<B>;
+using Iterator = TreeIterator<int, A::iterator, B::iterator, C::iterator>;
+
+}  // namespace
+
+TEST(TreeIteratorTest, Traversing) {
+  {
+    A a;
+    auto begin = Iterator(a.begin(), a.end());
+    auto end = Iterator(a.end(), a.end());
+    ASSERT_EQ(begin, end);
+  } {
+    int i{};
+    A a{{{++i, ++i}, {++i, ++i}}, {{++i, ++i}, {++i, ++i}}};
+    auto itr = Iterator(a.begin(), a.end());
+    auto end = Iterator(a.end(), a.end());
+    ASSERT_NE(itr, end);
+    int j{};
+    for (; itr != end; ++itr) {
+      ASSERT_EQ(*itr, ++j);
+    }
+    ASSERT_EQ(itr, end);
+  } {
+    int i{};
+    A a{{}, {{}, {++i}, {}}, {}, {{}, {++i}, {}}, {}};
+    auto itr = Iterator(a.begin(), a.end());
+    auto end = Iterator(a.end(), a.end());
+    ASSERT_NE(itr, end);
+    int j{};
+    for (; itr != end; ++itr) {
+      ASSERT_EQ(*itr, ++j);
+    }
+    ASSERT_EQ(itr, end);
+  }
+}
+
+TEST(TreeIteratorTest, Distance) {
+  {
+    A a;
+    auto begin = Iterator(a.begin(), a.end());
+    auto end = Iterator(a.end(), a.end());
+    ASSERT_EQ(begin, end);
+    ASSERT_EQ(std::distance(begin, end), 0);
+  } {
+    int i{};
+    A a{{{++i, ++i}, {++i, ++i}}, {{++i, ++i}, {++i, ++i}}};
+    auto begin = Iterator(a.begin(), a.end());
+    auto end = Iterator(a.end(), a.end());
+    ASSERT_EQ(std::distance(begin, end), i);
+  } {
+    int i{};
+    A a{{}, {{}, {++i}, {}}, {}, {{}, {++i}, {}}, {}};
+    auto begin = Iterator(a.begin(), a.end());
+    auto end = Iterator(a.end(), a.end());
+    ASSERT_EQ(std::distance(begin, end), i);
+  }
+}
 
 }  // namespace algorithm
 }  // namespace takram
