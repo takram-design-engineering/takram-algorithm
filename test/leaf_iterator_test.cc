@@ -1,5 +1,5 @@
 //
-//  tree_iterator_test.cc
+//  leaf_iterator_test.cc
 //
 //  MIT License
 //
@@ -29,7 +29,7 @@
 
 #include "gtest/gtest.h"
 
-#include "takram/algorithm/tree_iterator.h"
+#include "takram/algorithm/leaf_iterator.h"
 
 namespace takram {
 namespace algorithm {
@@ -39,11 +39,11 @@ namespace {
 using C = std::vector<int>;
 using B = std::vector<C>;
 using A = std::vector<B>;
-using Iterator = TreeIterator<int, A::iterator, B::iterator, C::iterator>;
+using Iterator = LeafIterator<int, A::iterator, B::iterator, C::iterator>;
 
 }  // namespace
 
-TEST(TreeIteratorTest, Traversing) {
+TEST(LeafIteratorTest, Traversing) {
   {
     A a;
     auto begin = Iterator(a.begin(), a.end());
@@ -71,10 +71,20 @@ TEST(TreeIteratorTest, Traversing) {
       ASSERT_EQ(*itr, ++j);
     }
     ASSERT_EQ(itr, end);
+  } {
+    A a{{{}}};
+    auto itr = Iterator(a.begin(), a.end());
+    auto end = Iterator(a.end(), a.end());
+    ASSERT_EQ(itr, end);
+  } {
+    A a{{{}}, {{}}};
+    auto itr = Iterator(a.begin(), a.end());
+    auto end = Iterator(a.end(), a.end());
+    ASSERT_EQ(itr, end);
   }
 }
 
-TEST(TreeIteratorTest, Distance) {
+TEST(LeafIteratorTest, Distance) {
   {
     A a;
     auto begin = Iterator(a.begin(), a.end());
@@ -83,7 +93,7 @@ TEST(TreeIteratorTest, Distance) {
     ASSERT_EQ(std::distance(begin, end), 0);
   } {
     int i{};
-    A a{{{++i, ++i}, {++i, ++i}}, {{++i, ++i}, {++i, ++i}}};
+    A a{{{++i, ++i}, {++i, ++i}}, {{}}, {{++i, ++i}, {++i, ++i}}};
     auto begin = Iterator(a.begin(), a.end());
     auto end = Iterator(a.end(), a.end());
     ASSERT_EQ(std::distance(begin, end), i);
@@ -93,6 +103,16 @@ TEST(TreeIteratorTest, Distance) {
     auto begin = Iterator(a.begin(), a.end());
     auto end = Iterator(a.end(), a.end());
     ASSERT_EQ(std::distance(begin, end), i);
+  } {
+    A a{{{}}};
+    auto begin = Iterator(a.begin(), a.end());
+    auto end = Iterator(a.end(), a.end());
+    ASSERT_EQ(std::distance(begin, end), 0);
+  } {
+    A a{{{}}, {{}}};
+    auto begin = Iterator(a.begin(), a.end());
+    auto end = Iterator(a.end(), a.end());
+    ASSERT_EQ(std::distance(begin, end), 0);
   }
 }
 

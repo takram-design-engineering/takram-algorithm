@@ -28,6 +28,6 @@
 #ifndef TAKRAM_ALGORITHM_H_
 #define TAKRAM_ALGORITHM_H_
 
-#include "takram/algorithm/tree_iterator.h"
+#include "takram/algorithm/leaf_iterator.h"
 
 #endif  // TAKRAM_ALGORITHM_H_
