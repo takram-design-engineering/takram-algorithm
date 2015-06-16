@@ -1,7 +1,7 @@
 Algorithm
 =========
 
-A collection of C++ classes that defines classes and functions designed to be used on ranges of elements (WIP).
+A collection of C++ classes and functions designed to be used on ranges of elements (WIP).
 
 ### Classes
 
