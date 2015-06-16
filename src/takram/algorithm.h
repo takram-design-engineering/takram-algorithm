@@ -28,7 +28,7 @@
 #ifndef TAKRAM_ALGORITHM_H_
 #define TAKRAM_ALGORITHM_H_
 
-#include "takram/algorithm/tuple_iterator.h"
+#include "takram/algorithm/leaf_iterator_iterator.h"
 #include "takram/algorithm/variadic_template.h"
 
 #endif  // TAKRAM_ALGORITHM_H_
