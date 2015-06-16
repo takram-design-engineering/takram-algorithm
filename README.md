@@ -23,7 +23,7 @@ A a{{{}}, {{0, 1}, {2, 3}}, {{}}, {{}, {4, 5}, {}}, {{}}};
 auto itr = Iterator(a.begin(), a.end());
 const auto end = Iterator(a.end(), a.end());
 for (; itr != end; ++itr) {
-  std::cout << *itr << " " << std::endl;
+  std::cout << *itr << " ";
 }
 ```
 
