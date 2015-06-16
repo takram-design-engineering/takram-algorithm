@@ -1,5 +1,5 @@
 //
-//  takram/algorithm.h
+//  takram/algorithm/variadic_template.h
 //
 //  MIT License
 //
@@ -25,10 +25,28 @@
 //
 
 #pragma once
-#ifndef TAKRAM_ALGORITHM_H_
-#define TAKRAM_ALGORITHM_H_
+#ifndef TAKRAM_ALGORITHM_VARIADIC_TEMPLATE_H_
+#define TAKRAM_ALGORITHM_VARIADIC_TEMPLATE_H_
 
-#include "takram/algorithm/tuple_iterator.h"
-#include "takram/algorithm/variadic_template.h"
+namespace takram {
+namespace algorithm {
 
-#endif  // TAKRAM_ALGORITHM_H_
+template <class T, class... Rest>
+struct First {
+  using Type = T;
+};
+
+template <class T, class... Rest>
+struct Last {
+  using Type = typename Last<Rest...>::Type;
+};
+
+template <class T>
+struct Last<T> {
+  using Type = T;
+};
+
+}  // namespace algorithm
+}  // namespace takram
+
+#endif  // TAKRAM_ALGORITHM_VARIADIC_TEMPLATE_H_

@@ -1,5 +1,5 @@
 //
-//  leaf_iterator_test.cc
+//  leaf_iterator_iterator_test.cc
 //
 //  MIT License
 //
@@ -29,7 +29,7 @@
 
 #include "gtest/gtest.h"
 
-#include "takram/algorithm/leaf_iterator.h"
+#include "takram/algorithm/leaf_iterator_iterator.h"
 
 namespace takram {
 namespace algorithm {
@@ -39,11 +39,11 @@ namespace {
 using C = std::vector<int>;
 using B = std::vector<C>;
 using A = std::vector<B>;
-using Iterator = LeafIterator<int, A::iterator, B::iterator, C::iterator>;
+using Iterator = LeafIteratorIterator<A::iterator, B::iterator, C::iterator>;
 
 }  // namespace
 
-TEST(LeafIteratorTest, Traversing) {
+TEST(LeafIteratorIteratorTest, Traversing) {
   {
     A a;
     auto begin = Iterator(a.begin(), a.end());
@@ -84,7 +84,7 @@ TEST(LeafIteratorTest, Traversing) {
   }
 }
 
-TEST(LeafIteratorTest, Distance) {
+TEST(LeafIteratorIteratorTest, Distance) {
   {
     A a;
     auto begin = Iterator(a.begin(), a.end());

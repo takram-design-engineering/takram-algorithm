@@ -5,19 +5,19 @@ A collection of C++ classes and functions designed to be used on ranges of eleme
 
 ### Classes
 
-- [`takram::algorithm::LeafIterator`](src/takram/algorithm/leaf_iterator.h)
+- [`takram::algorithm::LeafIteratorIterator`](src/takram/algorithm/leaf_iterator_iterator.h)
 
 ## Examples
 
-### LeafIterator
+### LeafIteratorIterator
 
-A leaf iterator traverses all the leafs in a container that has a tree-like structure. Empty sub-containers which have no leaves will be skipped during iteration.
+A [LeafIteratorIterator](src/takram/algorithm/leaf_iterator_iterator.h) traverses all the leafs in a container that has a tree-like structure.
 
 ```cpp
 using C = std::vector<int>;
 using B = std::vector<C>;
 using A = std::vector<B>;
-using Iterator = LeafIterator<int, A::iterator, B::iterator, C::iterator>;
+using Iterator = LeafIteratorIterator<int, A::iterator, B::iterator, C::iterator>;
 
 A a{{{}}, {{0, 1}, {2, 3}}, {{}}, {{}, {4, 5}, {}}, {{}}};
 auto itr = Iterator(a.begin(), a.end());
