@@ -66,7 +66,7 @@ class LeafIteratorIterator<Iterator> final
   ValueType& operator*() const;
   ValueType * operator->() const { return &operator*(); }
   LeafIteratorIterator& operator++();
-  LeafIteratorIterator operator++(int);
+  const LeafIteratorIterator operator++(int);
 
  private:
   Iterator current_;
@@ -99,7 +99,7 @@ class LeafIteratorIterator<Iterator, RestIterators...> final
   ValueType& operator*() const;
   ValueType * operator->() const { return &operator*(); }
   LeafIteratorIterator& operator++();
-  LeafIteratorIterator operator++(int);
+  const LeafIteratorIterator operator++(int);
 
  private:
   void validate();
@@ -211,7 +211,7 @@ inline void LeafIteratorIterator<Iterator, RestIterators...>::validate() {
 }
 
 template <class Iterator>
-inline LeafIteratorIterator<Iterator>
+inline const LeafIteratorIterator<Iterator>
     LeafIteratorIterator<Iterator>::operator++(int) {
   LeafIteratorIterator result(*this);
   operator++();
@@ -219,7 +219,7 @@ inline LeafIteratorIterator<Iterator>
 }
 
 template <class Iterator, class... RestIterators>
-inline LeafIteratorIterator<Iterator, RestIterators...>
+inline const LeafIteratorIterator<Iterator, RestIterators...>
     LeafIteratorIterator<Iterator, RestIterators...>::operator++(int) {
   LeafIteratorIterator result(*this);
   operator++();
