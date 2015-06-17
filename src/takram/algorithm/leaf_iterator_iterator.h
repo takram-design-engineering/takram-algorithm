@@ -55,8 +55,8 @@ class LeafIteratorIterator<Iterator> final
   LeafIteratorIterator(Iterator begin, Iterator end);
 
   // Copy semantics
-  LeafIteratorIterator(const LeafIteratorIterator& other) = default;
-  LeafIteratorIterator& operator=(const LeafIteratorIterator& other) = default;
+  LeafIteratorIterator(const LeafIteratorIterator&) = default;
+  LeafIteratorIterator& operator=(const LeafIteratorIterator&) = default;
 
   // Comparison
   bool operator==(const LeafIteratorIterator& other) const;
@@ -88,8 +88,8 @@ class LeafIteratorIterator<Iterator, RestIterators...> final
   LeafIteratorIterator(Iterator begin, Iterator end);
 
   // Copy semantics
-  LeafIteratorIterator(const LeafIteratorIterator& other) = default;
-  LeafIteratorIterator& operator=(const LeafIteratorIterator& other) = default;
+  LeafIteratorIterator(const LeafIteratorIterator&) = default;
+  LeafIteratorIterator& operator=(const LeafIteratorIterator&) = default;
 
   // Comparison
   bool operator==(const LeafIteratorIterator& other) const;
@@ -187,7 +187,7 @@ template <class Iterator, class... RestIterators>
 inline LeafIteratorIterator<Iterator, RestIterators...>&
     LeafIteratorIterator<Iterator, RestIterators...>::operator++() {
   using RestIterator = LeafIteratorIterator<RestIterators...>;
-  if (++rest_ == RestIterator(current_->end(), current_->end())) {
+  if (++rest_ == RestIterator(std::end(*current_), std::end(*current_))) {
     ++current_;
     validate();
   }
@@ -201,11 +201,11 @@ inline void LeafIteratorIterator<Iterator, RestIterators...>::validate() {
     rest_ = RestIterator();
     return;
   }
-  rest_ = RestIterator(current_->begin(), current_->end());
+  rest_ = RestIterator(std::begin(*current_), std::end(*current_));
   while (rest_ == RestIterator() && current_ != end_) {
     ++current_;
     if (current_ != end_) {
-      rest_ = RestIterator(current_->begin(), current_->end());
+      rest_ = RestIterator(std::begin(*current_), std::end(*current_));
     }
   }
 }

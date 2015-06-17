@@ -31,19 +31,25 @@
 namespace takram {
 namespace algorithm {
 
+template <class... Rest>
+struct First;
+
 template <class T, class... Rest>
-struct First {
+struct First<T, Rest...> {
   using Type = T;
 };
 
-template <class T, class... Rest>
-struct Last {
-  using Type = typename Last<Rest...>::Type;
-};
+template <class... Rest>
+struct Last;
 
 template <class T>
 struct Last<T> {
   using Type = T;
+};
+
+template <class T, class... Rest>
+struct Last<T, Rest...> {
+  using Type = typename Last<Rest...>::Type;
 };
 
 }  // namespace algorithm
