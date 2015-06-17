@@ -29,7 +29,7 @@ std::iota(a.begin(), a.end(), 0);
 std::iota(b.begin(), b.end(), 0);
 std::iota(c.begin(), c.end(), 0);
 
-using Iterator = TupleIteratorIterator<
+using Iterator = takram::TupleIteratorIterator<
     decltype(a)::iterator, decltype(b)::iterator, decltype(c)::iterator>;
 auto itr = Iterator(std::begin(a), std::begin(b), std::begin(c));
 const auto end = Iterator(std::end(a), std::end(b), std::end(c));
@@ -64,7 +64,7 @@ A [LeafIteratorIterator](src/takram/algorithm/leaf_iterator_iterator.h) traverse
 using C = std::vector<int>;
 using B = std::vector<C>;
 using A = std::vector<B>;
-using Iterator = LeafIteratorIterator<int, A::iterator, B::iterator, C::iterator>;
+using Iterator = takram::LeafIteratorIterator<A::iterator, B::iterator, C::iterator>;
 
 A a{{{}}, {{0, 1}, {2, 3}}, {{}}, {{}, {4, 5}, {}}, {{}}};
 auto itr = Iterator(std::begin(a), std::end(a));
