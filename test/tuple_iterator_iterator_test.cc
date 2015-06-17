@@ -55,36 +55,6 @@ using Iterator = TupleIteratorIterator<A::iterator, B::iterator, C::iterator>;
 }  // namespace
 
 TEST(TupleIteratorIteratorTest, Traversing) {
-
-  {
-std::vector<int> a(4);
-std::vector<float> b(5);
-std::vector<double> c(6);
-std::iota(a.begin(), a.end(), 0);
-std::iota(b.begin(), b.end(), 0);
-std::iota(c.begin(), c.end(), 0);
-
-using Iterator = TupleIteratorIterator<
-    decltype(a)::iterator, decltype(b)::iterator, decltype(c)::iterator>;
-auto itr = Iterator(std::begin(a), std::begin(b), std::begin(c));
-const auto end = Iterator(std::end(a), std::end(b), std::end(c));
-for (; itr != end; ++itr) {
-  auto& a = std::get<0>(*itr);
-  auto& b = std::get<1>(*itr);
-  auto& c = std::get<2>(*itr);
-  std::cout << a << " " << b << " " << c << std::endl;
-}
-  }
-
-
-
-
-
-
-
-
-
-
   A a(5);
   B b(5);
   C c(5);
