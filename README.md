@@ -5,6 +5,7 @@ A collection of C++ classes and functions designed to be used on ranges of eleme
 
 ### Classes
 
+- [`takram::algorithm::TupleIteratorIterator`](src/takram/algorithm/tuple_iterator_iterator.h)
 - [`takram::algorithm::LeafIteratorIterator`](src/takram/algorithm/leaf_iterator_iterator.h)
 
 ## Examples
