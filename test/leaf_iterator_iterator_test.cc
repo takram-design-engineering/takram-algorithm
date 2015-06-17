@@ -47,13 +47,13 @@ TEST(LeafIteratorIteratorTest, Traversing) {
   {
     A a;
     auto begin = Iterator(std::begin(a), std::end(a));
-    auto end = Iterator(std::end(a), std::end(a));
+    const auto end = Iterator(std::end(a), std::end(a));
     ASSERT_EQ(begin, end);
   } {
     int i{};
     A a{{{++i, ++i}, {++i, ++i}}, {{++i, ++i}, {++i, ++i}}};
     auto itr = Iterator(std::begin(a), std::end(a));
-    auto end = Iterator(std::end(a), std::end(a));
+    const auto end = Iterator(std::end(a), std::end(a));
     ASSERT_NE(itr, end);
     int j{};
     for (; itr != end; ++itr) {
@@ -64,7 +64,7 @@ TEST(LeafIteratorIteratorTest, Traversing) {
     int i{};
     A a{{}, {{}, {++i}, {}}, {}, {{}, {++i}, {}}, {}};
     auto itr = Iterator(std::begin(a), std::end(a));
-    auto end = Iterator(std::end(a), std::end(a));
+    const auto end = Iterator(std::end(a), std::end(a));
     ASSERT_NE(itr, end);
     int j{};
     for (; itr != end; ++itr) {
@@ -74,12 +74,12 @@ TEST(LeafIteratorIteratorTest, Traversing) {
   } {
     A a{{{}}};
     auto itr = Iterator(std::begin(a), std::end(a));
-    auto end = Iterator(std::end(a), std::end(a));
+    const auto end = Iterator(std::end(a), std::end(a));
     ASSERT_EQ(itr, end);
   } {
     A a{{{}}, {{}}};
     auto itr = Iterator(std::begin(a), std::end(a));
-    auto end = Iterator(std::end(a), std::end(a));
+    const auto end = Iterator(std::end(a), std::end(a));
     ASSERT_EQ(itr, end);
   }
 }
@@ -87,31 +87,31 @@ TEST(LeafIteratorIteratorTest, Traversing) {
 TEST(LeafIteratorIteratorTest, Distance) {
   {
     A a;
-    auto begin = Iterator(std::begin(a), std::end(a));
-    auto end = Iterator(std::end(a), std::end(a));
+    const auto begin = Iterator(std::begin(a), std::end(a));
+    const auto end = Iterator(std::end(a), std::end(a));
     ASSERT_EQ(begin, end);
     ASSERT_EQ(std::distance(begin, end), 0);
   } {
     int i{};
     A a{{{++i, ++i}, {++i, ++i}}, {{}}, {{++i, ++i}, {++i, ++i}}};
-    auto begin = Iterator(std::begin(a), std::end(a));
-    auto end = Iterator(std::end(a), std::end(a));
+    const auto begin = Iterator(std::begin(a), std::end(a));
+    const auto end = Iterator(std::end(a), std::end(a));
     ASSERT_EQ(std::distance(begin, end), i);
   } {
     int i{};
     A a{{}, {{}, {++i}, {}}, {}, {{}, {++i}, {}}, {}};
-    auto begin = Iterator(std::begin(a), std::end(a));
-    auto end = Iterator(std::end(a), std::end(a));
+    const auto begin = Iterator(std::begin(a), std::end(a));
+    const auto end = Iterator(std::end(a), std::end(a));
     ASSERT_EQ(std::distance(begin, end), i);
   } {
     A a{{{}}};
-    auto begin = Iterator(std::begin(a), std::end(a));
-    auto end = Iterator(std::end(a), std::end(a));
+    const auto begin = Iterator(std::begin(a), std::end(a));
+    const auto end = Iterator(std::end(a), std::end(a));
     ASSERT_EQ(std::distance(begin, end), 0);
   } {
     A a{{{}}, {{}}};
-    auto begin = Iterator(std::begin(a), std::end(a));
-    auto end = Iterator(std::end(a), std::end(a));
+    const auto begin = Iterator(std::begin(a), std::end(a));
+    const auto end = Iterator(std::end(a), std::end(a));
     ASSERT_EQ(std::distance(begin, end), 0);
   }
 }

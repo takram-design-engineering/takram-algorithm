@@ -9,6 +9,39 @@ A collection of C++ classes and functions designed to be used on ranges of eleme
 
 ## Examples
 
+### TupleIteratorIterator
+
+[TupleIteratorIterator](src/takram/algorithm/tuple_iterator_iterator.h) is a forward iterator that increments all the internal iterators passed to its constructor. The value type of TupleIteratorIterator is a specialization of std::tuple that holds references to the values of the internal iterators. Two TupleIteratorIterators are considered equal when both share one of the internal iterators, so that the iteration stops at the shortest distance among the containers.
+
+```cpp
+std::vector<int> a(4);
+std::vector<float> b(5);
+std::vector<double> c(6);
+std::iota(a.begin(), a.end(), 0);
+std::iota(b.begin(), b.end(), 0);
+std::iota(c.begin(), c.end(), 0);
+
+using Iterator = TupleIteratorIterator<
+    decltype(a)::iterator, decltype(b)::iterator, decltype(c)::iterator>;
+auto itr = Iterator(std::begin(a), std::begin(b), std::begin(c));
+const auto end = Iterator(std::end(a), std::end(b), std::end(c));
+for (; itr != end; ++itr) {
+  auto& a = std::get<0>(*itr);
+  auto& b = std::get<1>(*itr);
+  auto& c = std::get<2>(*itr);
+  std::cout << a << " " << b << " " << c << std::endl;
+}
+```
+
+This code will output:
+
+```
+0 0 0
+1 1 1
+2 2 2
+3 3 3
+```
+
 ### LeafIteratorIterator
 
 A [LeafIteratorIterator](src/takram/algorithm/leaf_iterator_iterator.h) traverses all the leafs in a container that has a tree-like structure.
