@@ -15,6 +15,13 @@ A collection of C++ classes and functions designed to be used on ranges of eleme
 [TupleIteratorIterator](src/takram/algorithm/tuple_iterator_iterator.h) is a forward iterator that increments all the internal iterators passed to its constructor. The value type of TupleIteratorIterator is a specialization of std::tuple that holds references to the values of the internal iterators. Two TupleIteratorIterators are considered equal when both share one of the internal iterators, so that the iteration stops at the shortest distance among the containers.
 
 ```cpp
+#include <iostream>
+#include <iterator>
+#include <numeric>
+#include <vector>
+
+#include "takram/algorithm/tuple_iterator_iterator.h"
+
 std::vector<int> a(4);
 std::vector<float> b(5);
 std::vector<double> c(6);
@@ -48,14 +55,20 @@ This code will output:
 A [LeafIteratorIterator](src/takram/algorithm/leaf_iterator_iterator.h) traverses all the leafs in a container that has a tree-like structure.
 
 ```cpp
+#include <iostream>
+#include <iterator>
+#include <vector>
+
+#include "takram/algorithm/leaf_iterator_iterator.h"
+
 using C = std::vector<int>;
 using B = std::vector<C>;
 using A = std::vector<B>;
 using Iterator = LeafIteratorIterator<int, A::iterator, B::iterator, C::iterator>;
 
 A a{{{}}, {{0, 1}, {2, 3}}, {{}}, {{}, {4, 5}, {}}, {{}}};
-auto itr = Iterator(a.begin(), a.end());
-const auto end = Iterator(a.end(), a.end());
+auto itr = Iterator(std::begin(a), std::end(a));
+const auto end = Iterator(std::end(a), std::end(a));
 for (; itr != end; ++itr) {
   std::cout << *itr << " ";
 }
