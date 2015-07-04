@@ -223,7 +223,7 @@
 		93F8AD6717C8B39800310877 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0610;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = sgss;
 				TargetAttributes = {
 					9309550D1A4FB1FC00D09023 = {
@@ -357,7 +357,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 930959301A5062D400D09023 /* project_debug.xcconfig */;
 			buildSettings = {
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				ENABLE_TESTABILITY = YES;
+				MACOSX_DEPLOYMENT_TARGET = "";
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 			};
@@ -367,7 +368,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 930959311A5062D400D09023 /* project_release.xcconfig */;
 			buildSettings = {
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = "";
 				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = macosx;
 			};
