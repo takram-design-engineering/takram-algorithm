@@ -153,6 +153,7 @@
 			buildPhases = (
 				9309550A1A4FB1FC00D09023 /* Sources */,
 				9309550B1A4FB1FC00D09023 /* Frameworks */,
+				93B473F31B648B0700613FB6 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -169,6 +170,7 @@
 			buildPhases = (
 				9397F5891B647CAA00DFEDC9 /* Sources */,
 				9397F58A1B647CAA00DFEDC9 /* Frameworks */,
+				93B473F51B648B1600613FB6 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -185,6 +187,7 @@
 			buildPhases = (
 				93C6B51119B22F5500A1CF93 /* Sources */,
 				93C6B51219B22F5500A1CF93 /* Frameworks */,
+				93B473F41B648B1000613FB6 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -248,6 +251,48 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		93B473F31B648B0700613FB6 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PROJECT_DIR}/script/header.sh\" \"src\"";
+		};
+		93B473F41B648B1000613FB6 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PROJECT_DIR}/script/header.sh\" \"src\"";
+		};
+		93B473F51B648B1600613FB6 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PROJECT_DIR}/script/header.sh\" \"src\"";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		9309550A1A4FB1FC00D09023 /* Sources */ = {
@@ -322,6 +367,7 @@
 		};
 		9397F59D1B647CAA00DFEDC9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 930955051A4FB1E200D09023 /* product_debug.xcconfig */;
 			buildSettings = {
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -333,6 +379,7 @@
 		};
 		9397F59E1B647CAA00DFEDC9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 930955041A4FB1E200D09023 /* product_release.xcconfig */;
 			buildSettings = {
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
