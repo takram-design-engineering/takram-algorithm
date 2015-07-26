@@ -28,6 +28,15 @@
 #ifndef TAKRAM_ALGORITHM_H_
 #define TAKRAM_ALGORITHM_H_
 
+namespace takram {
+namespace algorithm {
+
+extern const double version_number;
+extern const unsigned char version_string[];
+
+}  // namespace algorithm
+}  // namespace takram
+
 #include "takram/algorithm/leaf_iterator_iterator.h"
 #include "takram/algorithm/tuple_iterator_iterator.h"
 #include "takram/algorithm/variadic_template.h"
