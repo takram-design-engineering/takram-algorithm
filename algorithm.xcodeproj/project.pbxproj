@@ -8,16 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		930955321A4FB46600D09023 /* libtakram_algorithm.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9309550E1A4FB1FC00D09023 /* libtakram_algorithm.dylib */; };
-		93247C111B3085D8001F8AF0 /* tuple_iterator_iterator.h in Headers */ = {isa = PBXBuildFile; fileRef = 93247C101B3085D8001F8AF0 /* tuple_iterator_iterator.h */; };
-		93247C121B3085D8001F8AF0 /* tuple_iterator_iterator.h in Headers */ = {isa = PBXBuildFile; fileRef = 93247C101B3085D8001F8AF0 /* tuple_iterator_iterator.h */; };
 		93247C141B309260001F8AF0 /* tuple_iterator_iterator_test.cc in Sources */ = {isa = PBXBuildFile; fileRef = 93247C131B309260001F8AF0 /* tuple_iterator_iterator_test.cc */; };
+		9397F5C11B647F6400DFEDC9 /* algorithm.cc in Sources */ = {isa = PBXBuildFile; fileRef = 93D7E5131B2D22B2006EA047 /* algorithm.cc */; };
 		93D7E5101B2C820B006EA047 /* leaf_iterator_iterator_test.cc in Sources */ = {isa = PBXBuildFile; fileRef = 93D7E50F1B2C820B006EA047 /* leaf_iterator_iterator_test.cc */; };
-		93D7E5151B2D22B2006EA047 /* leaf_iterator_iterator.h in Headers */ = {isa = PBXBuildFile; fileRef = 93D7E5121B2D22B2006EA047 /* leaf_iterator_iterator.h */; };
-		93D7E5161B2D22B2006EA047 /* leaf_iterator_iterator.h in Headers */ = {isa = PBXBuildFile; fileRef = 93D7E5121B2D22B2006EA047 /* leaf_iterator_iterator.h */; };
 		93D7E5171B2D22B2006EA047 /* algorithm.cc in Sources */ = {isa = PBXBuildFile; fileRef = 93D7E5131B2D22B2006EA047 /* algorithm.cc */; };
 		93D7E5181B2D22B2006EA047 /* algorithm.cc in Sources */ = {isa = PBXBuildFile; fileRef = 93D7E5131B2D22B2006EA047 /* algorithm.cc */; };
-		93D7E5191B2D22B2006EA047 /* algorithm.h in Headers */ = {isa = PBXBuildFile; fileRef = 93D7E5141B2D22B2006EA047 /* algorithm.h */; };
-		93D7E51A1B2D22B2006EA047 /* algorithm.h in Headers */ = {isa = PBXBuildFile; fileRef = 93D7E5141B2D22B2006EA047 /* algorithm.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +37,7 @@
 		93247C101B3085D8001F8AF0 /* tuple_iterator_iterator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tuple_iterator_iterator.h; sourceTree = "<group>"; };
 		93247C131B309260001F8AF0 /* tuple_iterator_iterator_test.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tuple_iterator_iterator_test.cc; sourceTree = "<group>"; };
 		936798521B307EA5004BE30A /* variadic_template.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = variadic_template.h; sourceTree = "<group>"; };
+		9397F58D1B647CAA00DFEDC9 /* libtakram_algorithm.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libtakram_algorithm.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		93C6B51519B22F5500A1CF93 /* libtakram_algorithm.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libtakram_algorithm.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		93D7E50F1B2C820B006EA047 /* leaf_iterator_iterator_test.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = leaf_iterator_iterator_test.cc; sourceTree = "<group>"; };
 		93D7E5121B2D22B2006EA047 /* leaf_iterator_iterator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = leaf_iterator_iterator.h; sourceTree = "<group>"; };
@@ -52,6 +48,13 @@
 
 /* Begin PBXFrameworksBuildPhase section */
 		9309550B1A4FB1FC00D09023 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9397F58A1B647CAA00DFEDC9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -135,35 +138,13 @@
 			children = (
 				9309550E1A4FB1FC00D09023 /* libtakram_algorithm.dylib */,
 				93C6B51519B22F5500A1CF93 /* libtakram_algorithm.a */,
+				9397F58D1B647CAA00DFEDC9 /* libtakram_algorithm.a */,
 				93F1B9F6180282B0002A5A5C /* takram_algorithm_test */,
 			);
 			name = products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
-
-/* Begin PBXHeadersBuildPhase section */
-		9309550C1A4FB1FC00D09023 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				93D7E5191B2D22B2006EA047 /* algorithm.h in Headers */,
-				93247C111B3085D8001F8AF0 /* tuple_iterator_iterator.h in Headers */,
-				93D7E5151B2D22B2006EA047 /* leaf_iterator_iterator.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		93C6B51319B22F5500A1CF93 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				93D7E51A1B2D22B2006EA047 /* algorithm.h in Headers */,
-				93247C121B3085D8001F8AF0 /* tuple_iterator_iterator.h in Headers */,
-				93D7E5161B2D22B2006EA047 /* leaf_iterator_iterator.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		9309550D1A4FB1FC00D09023 /* algorithm_shared */ = {
@@ -172,7 +153,6 @@
 			buildPhases = (
 				9309550A1A4FB1FC00D09023 /* Sources */,
 				9309550B1A4FB1FC00D09023 /* Frameworks */,
-				9309550C1A4FB1FC00D09023 /* Headers */,
 			);
 			buildRules = (
 			);
@@ -183,13 +163,28 @@
 			productReference = 9309550E1A4FB1FC00D09023 /* libtakram_algorithm.dylib */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
+		9397F58C1B647CAA00DFEDC9 /* algorithm_ios */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9397F5A11B647CAA00DFEDC9 /* Build configuration list for PBXNativeTarget "algorithm_ios" */;
+			buildPhases = (
+				9397F5891B647CAA00DFEDC9 /* Sources */,
+				9397F58A1B647CAA00DFEDC9 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = algorithm_ios;
+			productName = algorithm_ios;
+			productReference = 9397F58D1B647CAA00DFEDC9 /* libtakram_algorithm.a */;
+			productType = "com.apple.product-type.library.static";
+		};
 		93C6B51419B22F5500A1CF93 /* algorithm_static */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 93C6B51619B22F5500A1CF93 /* Build configuration list for PBXNativeTarget "algorithm_static" */;
 			buildPhases = (
 				93C6B51119B22F5500A1CF93 /* Sources */,
 				93C6B51219B22F5500A1CF93 /* Frameworks */,
-				93C6B51319B22F5500A1CF93 /* Headers */,
 			);
 			buildRules = (
 			);
@@ -229,6 +224,9 @@
 					9309550D1A4FB1FC00D09023 = {
 						CreatedOnToolsVersion = 6.1;
 					};
+					9397F58C1B647CAA00DFEDC9 = {
+						CreatedOnToolsVersion = 7.0;
+					};
 				};
 			};
 			buildConfigurationList = 93F8AD6A17C8B39800310877 /* Build configuration list for PBXProject "algorithm" */;
@@ -245,6 +243,7 @@
 			targets = (
 				9309550D1A4FB1FC00D09023 /* algorithm_shared */,
 				93C6B51419B22F5500A1CF93 /* algorithm_static */,
+				9397F58C1B647CAA00DFEDC9 /* algorithm_ios */,
 				93F1B9F5180282B0002A5A5C /* algorithm_test */,
 			);
 		};
@@ -256,6 +255,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				93D7E5171B2D22B2006EA047 /* algorithm.cc in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9397F5891B647CAA00DFEDC9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9397F5C11B647F6400DFEDC9 /* algorithm.cc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,6 +317,28 @@
 				INSTALL_PATH = "@rpath";
 				PRODUCT_NAME = "takram_$(PROJECT_NAME)";
 				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		9397F59D1B647CAA00DFEDC9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				EXECUTABLE_PREFIX = lib;
+				PRODUCT_NAME = "takram_$(PROJECT_NAME)";
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		9397F59E1B647CAA00DFEDC9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				EXECUTABLE_PREFIX = lib;
+				PRODUCT_NAME = "takram_$(PROJECT_NAME)";
+				SDKROOT = iphoneos;
 			};
 			name = Release;
 		};
@@ -368,7 +397,6 @@
 			baseConfigurationReference = 930959311A5062D400D09023 /* project_release.xcconfig */;
 			buildSettings = {
 				MACOSX_DEPLOYMENT_TARGET = "";
-				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = macosx;
 			};
 			name = Release;
@@ -381,6 +409,15 @@
 			buildConfigurations = (
 				930955171A4FB1FC00D09023 /* Debug */,
 				930955181A4FB1FC00D09023 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9397F5A11B647CAA00DFEDC9 /* Build configuration list for PBXNativeTarget "algorithm_ios" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9397F59D1B647CAA00DFEDC9 /* Debug */,
+				9397F59E1B647CAA00DFEDC9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
