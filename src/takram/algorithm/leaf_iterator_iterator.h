@@ -44,11 +44,15 @@ class LeafIteratorIterator;
 // Terminating partial specialization
 template <class Iterator>
 class LeafIteratorIterator<Iterator> final
-    : public std::iterator<
-          std::forward_iterator_tag,
-          typename Iterator::value_type> {
+    : public std::iterator<std::forward_iterator_tag,
+                           typename Iterator::value_type,
+                           typename Iterator::difference_type,
+                           typename Iterator::pointer,
+                           typename Iterator::reference> {
  private:
-  using ValueType = typename Iterator::value_type;
+  using Type = typename Iterator::value_type;
+  using Pointer = typename Iterator::pointer;
+  using Reference = typename Iterator::reference;
 
  public:
   LeafIteratorIterator();
@@ -63,10 +67,10 @@ class LeafIteratorIterator<Iterator> final
   bool operator!=(const LeafIteratorIterator& other) const;
 
   // Iterator
-  ValueType& operator*() const;
-  ValueType * operator->() const { return &operator*(); }
+  Reference operator*() const;
+  Pointer operator->() const { return &operator*(); }
   LeafIteratorIterator& operator++();
-  const LeafIteratorIterator operator++(int);
+  const LeafIteratorIterator& operator++(int);
 
  private:
   Iterator current_;
@@ -79,9 +83,14 @@ template <class Iterator, class... RestIterators>
 class LeafIteratorIterator<Iterator, RestIterators...> final
     : public std::iterator<
           std::forward_iterator_tag,
-          typename Last<Iterator, RestIterators...>::Type::value_type> {
+          typename Last<Iterator, RestIterators...>::Type::value_type,
+          typename Last<Iterator, RestIterators...>::Type::difference_type,
+          typename Last<Iterator, RestIterators...>::Type::pointer,
+          typename Last<Iterator, RestIterators...>::Type::reference> {
  private:
-  using ValueType = typename Last<Iterator, RestIterators...>::Type::value_type;
+  using Type = typename Last<Iterator, RestIterators...>::Type::value_type;
+  using Pointer = typename Last<Iterator, RestIterators...>::Type::pointer;
+  using Reference = typename Last<Iterator, RestIterators...>::Type::reference;
 
  public:
   LeafIteratorIterator();
@@ -96,10 +105,10 @@ class LeafIteratorIterator<Iterator, RestIterators...> final
   bool operator!=(const LeafIteratorIterator& other) const;
 
   // Iterator
-  ValueType& operator*() const;
-  ValueType * operator->() const { return &operator*(); }
+  Reference operator*() const;
+  Pointer operator->() const { return &operator*(); }
   LeafIteratorIterator& operator++();
-  const LeafIteratorIterator operator++(int);
+  const LeafIteratorIterator& operator++(int);
 
  private:
   void validate();
@@ -165,13 +174,13 @@ inline bool LeafIteratorIterator<Iterator, RestIterators...>::operator!=(
 #pragma mark Iterator
 
 template <class Iterator>
-inline typename LeafIteratorIterator<Iterator>::ValueType&
+inline typename LeafIteratorIterator<Iterator>::Reference
     LeafIteratorIterator<Iterator>::operator*() const {
   return *current_;
 }
 
 template <class Iterator, class... RestIterators>
-inline typename LeafIteratorIterator<Iterator, RestIterators...>::ValueType&
+inline typename LeafIteratorIterator<Iterator, RestIterators...>::Reference
     LeafIteratorIterator<Iterator, RestIterators...>::operator*() const {
   return *rest_;
 }
@@ -211,7 +220,7 @@ inline void LeafIteratorIterator<Iterator, RestIterators...>::validate() {
 }
 
 template <class Iterator>
-inline const LeafIteratorIterator<Iterator>
+inline const LeafIteratorIterator<Iterator>&
     LeafIteratorIterator<Iterator>::operator++(int) {
   LeafIteratorIterator result(*this);
   operator++();
@@ -219,7 +228,7 @@ inline const LeafIteratorIterator<Iterator>
 }
 
 template <class Iterator, class... RestIterators>
-inline const LeafIteratorIterator<Iterator, RestIterators...>
+inline const LeafIteratorIterator<Iterator, RestIterators...>&
     LeafIteratorIterator<Iterator, RestIterators...>::operator++(int) {
   LeafIteratorIterator result(*this);
   operator++();

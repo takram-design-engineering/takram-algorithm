@@ -38,11 +38,11 @@ namespace algorithm {
 
 template <class... Iterators>
 class TupleIteratorIterator final
-    : public std::iterator<
-          std::forward_iterator_tag,
-          std::tuple<typename Iterators::reference...>> {
+    : public std::iterator<std::forward_iterator_tag,
+                           std::tuple<typename Iterators::reference...>> {
  private:
-  using ValueType = std::tuple<typename Iterators::reference...>;
+  using Type = std::tuple<typename Iterators::reference...>;
+  using Pointer = Type *;
 
   template <std::size_t... Indexes>
   struct Equals;
@@ -62,17 +62,17 @@ class TupleIteratorIterator final
   bool operator!=(const TupleIteratorIterator& other) const;
 
   // Iterator
-  ValueType operator*() const;
-  ValueType * operator->() const { return &operator*(); }
+  Type operator*() const;
+  Pointer operator->() const { return &operator*(); }
   TupleIteratorIterator& operator++();
-  const TupleIteratorIterator operator++(int);
+  const TupleIteratorIterator& operator++(int);
 
  private:
   template <std::size_t... Indexes>
   bool equals(const TupleIteratorIterator& other,
               std::index_sequence<Indexes...>) const;
   template <std::size_t... Indexes>
-  ValueType derefer(std::index_sequence<Indexes...>) const;
+  Type derefer(std::index_sequence<Indexes...>) const;
   template <std::size_t... Indexes>
   void increment(std::index_sequence<Indexes...>);
 
@@ -115,14 +115,14 @@ inline bool TupleIteratorIterator<Iterators...>::operator!=(
 #pragma mark Iterator
 
 template <class... Iterators>
-inline typename TupleIteratorIterator<Iterators...>::ValueType
+inline typename TupleIteratorIterator<Iterators...>::Type
     TupleIteratorIterator<Iterators...>::operator*() const {
   return derefer(std::make_index_sequence<sizeof...(Iterators)>());
 }
 
 template <class... Iterators>
 template <std::size_t... Indexes>
-inline typename TupleIteratorIterator<Iterators...>::ValueType
+inline typename TupleIteratorIterator<Iterators...>::Type
     TupleIteratorIterator<Iterators...>::derefer(
         std::index_sequence<Indexes...>) const {
   return std::tie(*std::get<Indexes>(iterators_)...);
@@ -143,7 +143,7 @@ inline TupleIteratorIterator<Iterators...>&
 }
 
 template <class... Iterators>
-inline const TupleIteratorIterator<Iterators...>
+inline const TupleIteratorIterator<Iterators...>&
     TupleIteratorIterator<Iterators...>::operator++(int) {
   TupleIteratorIterator result(*this);
   operator++();
