@@ -3,6 +3,8 @@ Algorithm
 
 A collection of C++ classes and functions designed to be used on ranges of elements (WIP).
 
+[![Build Status](https://travis-ci.org/takram-design-engineering/takram-algorithm.svg)](https://travis-ci.org/takram-design-engineering/takram-algorithm)
+
 ### Classes
 
 - [`takram::algorithm::TupleIteratorIterator`](src/takram/algorithm/tuple_iterator_iterator.h)
