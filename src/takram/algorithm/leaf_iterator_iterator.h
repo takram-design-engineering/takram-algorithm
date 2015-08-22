@@ -1,7 +1,7 @@
 //
 //  takram/algorithm/leaf_iterator_iterator.h
 //
-//  MIT License
+//  The MIT License
 //
 //  Copyright (C) 2015 Shota Matsuda
 //
