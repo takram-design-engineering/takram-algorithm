@@ -3,7 +3,8 @@ Algorithm
 
 A collection of C++ classes and functions designed to be used on ranges of elements (WIP).
 
-[![Build Status](https://travis-ci.org/takram-design-engineering/takram-algorithm.svg)](https://travis-ci.org/takram-design-engineering/takram-algorithm)
+[![Build Status](https://travis-ci.org/takram-design-engineering/takram-algorithm.svg)](https://travis-ci.org/takram-design-engineering/takram-algorithm) [![License](http://img.shields.io/badge/license-MIT-lightgrey.svg?style=flat
+)](http://mit-license.org)
 
 ### Classes
 
