@@ -99,7 +99,7 @@
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>%(AdditionalDependencies);algorithmd.lib;gtestd.lib;gtest_maind.lib</AdditionalDependencies>
+      <AdditionalDependencies>%(AdditionalDependencies);algorithm.lib;gtest.lib;gtest_main.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories);$(OutDir)</AdditionalLibraryDirectories>
       <SubSystem>Console</SubSystem>
     </Link>
@@ -115,7 +115,7 @@
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>%(AdditionalDependencies);algorithmd.lib;gtestd.lib;gtest_maind.lib</AdditionalDependencies>
+      <AdditionalDependencies>%(AdditionalDependencies);algorithm.lib;gtest.lib;gtest_main.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories);$(OutDir)</AdditionalLibraryDirectories>
       <SubSystem>Console</SubSystem>
     </Link>
