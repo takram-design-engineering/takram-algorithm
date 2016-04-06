@@ -58,8 +58,12 @@ class TupleIteratorIterator final
   TupleIteratorIterator& operator=(const TupleIteratorIterator&) = default;
 
   // Comparison
-  bool operator==(const TupleIteratorIterator& other) const;
-  bool operator!=(const TupleIteratorIterator& other) const;
+  template <class... Iters>
+  friend bool operator==(const TupleIteratorIterator<Iters...>& lhs,
+                         const TupleIteratorIterator<Iters...>& rhs);
+  template <class... Iters>
+  friend bool operator!=(const TupleIteratorIterator<Iters...>& lhs,
+                         const TupleIteratorIterator<Iters...>& rhs);
 
   // Iterator
   Type operator*() const;
@@ -93,9 +97,15 @@ inline TupleIteratorIterator<Iterators...>::TupleIteratorIterator(
 #pragma mark Comparison
 
 template <class... Iterators>
-inline bool TupleIteratorIterator<Iterators...>::operator==(
-    const TupleIteratorIterator& other) const {
-  return equals(other, std::make_index_sequence<sizeof...(Iterators)>());
+inline bool operator==(const TupleIteratorIterator<Iterators...>& lhs,
+                       const TupleIteratorIterator<Iterators...>& rhs) {
+  return lhs.equals(rhs, std::make_index_sequence<sizeof...(Iterators)>());
+}
+
+template <class... Iterators>
+inline bool operator!=(const TupleIteratorIterator<Iterators...>& lhs,
+                       const TupleIteratorIterator<Iterators...>& rhs) {
+  return !(lhs == rhs);
 }
 
 template <class... Iterators>
@@ -104,12 +114,6 @@ inline bool TupleIteratorIterator<Iterators...>::equals(
     const TupleIteratorIterator& other,
     std::index_sequence<Indexes...>) const {
   return Equals<Indexes...>()(*this, other);
-}
-
-template <class... Iterators>
-inline bool TupleIteratorIterator<Iterators...>::operator!=(
-    const TupleIteratorIterator& other) const {
-  return !operator==(other);
 }
 
 #pragma mark Iterator

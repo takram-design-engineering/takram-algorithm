@@ -63,8 +63,12 @@ class LeafIteratorIterator<Iterator> final
   LeafIteratorIterator& operator=(const LeafIteratorIterator&) = default;
 
   // Comparison
-  bool operator==(const LeafIteratorIterator& other) const;
-  bool operator!=(const LeafIteratorIterator& other) const;
+  template <class Iter>
+  friend bool operator==(const LeafIteratorIterator<Iter>& lhs,
+                         const LeafIteratorIterator<Iter>& rhs);
+  template <class Iter>
+  friend bool operator!=(const LeafIteratorIterator<Iter>& lhs,
+                         const LeafIteratorIterator<Iter>& rhs);
 
   // Iterator
   Reference operator*() const;
@@ -101,8 +105,14 @@ class LeafIteratorIterator<Iterator, RestIterators...> final
   LeafIteratorIterator& operator=(const LeafIteratorIterator&) = default;
 
   // Comparison
-  bool operator==(const LeafIteratorIterator& other) const;
-  bool operator!=(const LeafIteratorIterator& other) const;
+  template <class Iter, class RestIter, class... RestIters>
+  friend bool operator==(
+      const LeafIteratorIterator<Iter, RestIter, RestIters...>& lhs,
+      const LeafIteratorIterator<Iter, RestIter, RestIters...>& rhs);
+  template <class Iter, class RestIter, class... RestIters>
+  friend bool operator!=(
+      const LeafIteratorIterator<Iter, RestIter, RestIters...>& lhs,
+      const LeafIteratorIterator<Iter, RestIter, RestIters...>& rhs);
 
   // Iterator
   Reference operator*() const;
@@ -145,30 +155,32 @@ inline LeafIteratorIterator<Iterator, RestIterators...>::LeafIteratorIterator(
 #pragma mark Comparison
 
 template <class Iterator>
-inline bool LeafIteratorIterator<Iterator>::operator==(
-    const LeafIteratorIterator& other) const {
-  return current_ == other.current_;
+inline bool operator==(const LeafIteratorIterator<Iterator>& lhs,
+                       const LeafIteratorIterator<Iterator>& rhs) {
+  return lhs.current_ == rhs.current_;
 }
 
 template <class Iterator>
-inline bool LeafIteratorIterator<Iterator>::operator!=(
-    const LeafIteratorIterator& other) const {
-  return !operator==(other);
+inline bool operator!=(const LeafIteratorIterator<Iterator>& lhs,
+                       const LeafIteratorIterator<Iterator>& rhs) {
+  return !(lhs == rhs);
 }
 
-template <class Iterator, class... RestIterators>
-inline bool LeafIteratorIterator<Iterator, RestIterators...>::operator==(
-    const LeafIteratorIterator& other) const {
-  return (current_ == other.current_ ||
-          (current_ == Iterator() && other.current_ == other.end_) ||
-          (current_ == end_ && other.current_ == Iterator())) &&
-         rest_ == other.rest_;
+template <class Iterator, class RestIterator, class... RestIterators>
+inline bool operator==(
+    const LeafIteratorIterator<Iterator, RestIterator, RestIterators...>& lhs,
+    const LeafIteratorIterator<Iterator, RestIterator, RestIterators...>& rhs) {
+  return (lhs.current_ == rhs.current_ ||
+          (lhs.current_ == Iterator() && rhs.current_ == rhs.end_) ||
+          (lhs.current_ == lhs.end_ && rhs.current_ == Iterator())) &&
+         lhs.rest_ == rhs.rest_;
 }
 
-template <class Iterator, class... RestIterators>
-inline bool LeafIteratorIterator<Iterator, RestIterators...>::operator!=(
-    const LeafIteratorIterator& other) const {
-  return !operator==(other);
+template <class Iterator, class RestIterator, class... RestIterators>
+inline bool operator!=(
+    const LeafIteratorIterator<Iterator, RestIterator, RestIterators...>& lhs,
+    const LeafIteratorIterator<Iterator, RestIterator, RestIterators...>& rhs) {
+  return !(lhs == rhs);
 }
 
 #pragma mark Iterator
